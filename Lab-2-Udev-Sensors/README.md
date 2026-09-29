@@ -36,8 +36,8 @@ This project implements a system-level **`udev` rule and event-handling pipeline
 │ -> /dev/ttyADAS0       │   │   init_radar.sh        │ logs system event
 
 
-Key Files & Configuration
-1. udev Rule Definitions (config/99-rivian-adas-sensors.rules)
+## **Key Files & Configuration**
+## **1. udev Rule Definitions (config/99-rivian-adas-sensors.rules)**
 Plaintext
 
 
@@ -47,7 +47,7 @@ SUBSYSTEM=="tty", KERNEL=="ttyADAS*", MODE="0666", SYMLINK+="adas_radar_front", 
 
 # Driver Monitoring System (DMS) USB Camera / FTDI Serial Driver
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0660", GROUP="plugdev", SYMLINK+="adas_camera_dms"
-2. Event Trigger Script (scripts/init_radar.sh)
+## **2. Event Trigger Script (scripts/init_radar.sh)**
 Executed automatically by the udev daemon with root privileges upon hardware match:
 
 Bash
@@ -63,7 +63,7 @@ if [ -c /dev/adas_radar_front ]; then
     stty -F /dev/adas_radar_front 115200 raw -echo
     echo "[$TIMESTAMP] [udev SUCCESS] Configured /dev/adas_radar_front to 115200 baud." >> "$LOG_FILE"
 fi
-Getting Started
+## **Getting Started**
 Prerequisites
 Linux Environment (Ubuntu/Debian preferred)
 
