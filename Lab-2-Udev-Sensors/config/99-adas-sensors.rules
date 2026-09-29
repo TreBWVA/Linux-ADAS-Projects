@@ -1,1 +1,12 @@
+# ------------------------------------------------------------------------------
+# ADAS Autonomy Sensor udev Configuration
+# Rules for mapping raw tty/USB peripherals to deterministic device nodes
+# ------------------------------------------------------------------------------
 
+# 1. Front Radar Sensor (Virtual or Physical ttyADAS device)
+# Generates symlink /dev/adas_radar_front and triggers baud-rate configuration script
+SUBSYSTEM=="tty", KERNEL=="ttyADAS*", MODE="0666", SYMLINK+="adas_radar_front", RUN+="/usr/local/bin/init_radar.sh"
+
+# 2. Driver Monitoring System (DMS) USB Camera / FTDI Adapter
+# Matches FTDI USB Serial vendor/product IDs, restricts group access to 'plugdev'
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0660", GROUP="plugdev", SYMLINK+="adas_camera_dms"
