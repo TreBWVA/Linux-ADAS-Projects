@@ -35,7 +35,7 @@ This project implements a system-level **`udev` rule and event-handling pipeline
 │ /dev/adas_radar_front  │   │ /usr/local/bin/        │ Sets 115200 baud &
 │ -> /dev/ttyADAS0       │   │   init_radar.sh        │ logs system event
 
-
+---
 ## **Key Files & Configuration**
 ## **1. udev Rule Definitions (config/99-rivian-adas-sensors.rules)**
 Plaintext
