@@ -1,1 +1,20 @@
 
+Ini, TOML
+
+
+[Unit]
+Description=Rivian ADAS Safety & Health Monitoring Service
+Requires=rivian-bms.service
+After=rivian-bms.service
+Documentation=https://github.com/your-username/rivian-embedded-linux-labs
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/adas_monitor.sh
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
