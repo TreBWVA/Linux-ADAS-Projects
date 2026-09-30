@@ -1,1 +1,19 @@
 
+Ini, TOML
+
+
+[Unit]
+Description=Rivian Virtual Battery Management System (BMS) Daemon
+After=network.target
+Documentation=https://github.com/your-username/rivian-embedded-linux-labs
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/bms_daemon.sh
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
